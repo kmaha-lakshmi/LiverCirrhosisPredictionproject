@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .result-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            max-width: 500px;
+        }
+
+        .result-box h2 {
+            color: #003366;
+            margin-bottom: 10px;
+        }
+
+        .result-box p {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #444;
+        }
+
+        .result-image {
+            max-width: 250px;
+            margin-top: 20px;
+        }
+
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #003366;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background-color: #001f4d;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-box">
+        <h2>{{ result }}</h2>
+        <p>Confidence: {{ confidence }}%</p>
+
+        {% if result == 'Liver Cirrhosis Detected' %}
+            <img src="{{ url_for('static', filename='liver_disease.png') }}" alt="Cirrhosis Detected" class="result-image">
+        {% else %}
+            <img src="{{ url_for('static', filename='healthy_liver.png') }}" alt="Healthy Liver" class="result-image">
+        {% endif %}
+
+        <br>
+        <a href="/" class="back-btn">Back to Home</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Liver Cirrhosis Prediction</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("/static/LiverCirrhosisPrediction.jpg");
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #003366;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 320px;
+            margin-left: 60%;
+        }
+
+        .form-container:hover {
+            box-shadow: 0 0 30px rgba(76, 175, 80, 0.6);
+            border-color: #388E3C;
+        }
+
+        h2 {
+            text-align: center;
+            color: #003366;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #003366;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #001F4D;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Enter Patient Details</h2>
+        <form action="/predict" method="POST">
+            <input type="number" name="Age" placeholder="Age" step="1" required>
+
+            <select name="Gender" required>
+                <option value="">Select Gender</option>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+            </select>
+
+            <input type="number" name="TB" placeholder="Total Bilirubin" step="0.01" required>
+            <input type="number" name="DB" placeholder="Direct Bilirubin" step="0.01" required>
+            <input type="number" name="Alkphos" placeholder="Alkaline Phosphatase" step="1" required>
+            <input type="number" name="Sgpt" placeholder="Alanine Aminotransferase" step="1" required>
+            <input type="number" name="Sgot" placeholder="Aspartate Aminotransferase" step="1" required>
+            <input type="number" name="TP" placeholder="Total Proteins" step="0.01" required>
+            <input type="number" name="ALB" placeholder="Albumin" step="0.01" required>
+            <input type="number" name="A/G Ratio" placeholder="Albumin and Globulin Ratio" step="0.01" required>
+
+            <input type="submit" value="Predict">
+        </form>
+    </div>
+</body>
+</html>
